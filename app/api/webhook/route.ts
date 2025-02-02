@@ -10,14 +10,17 @@ export async function GET(req: NextRequest) {
   const challenge = searchParams.get("hub.challenge");
 
   if (mode === "subscribe" && token === VERIFY_TOKEN) {
+    console.log("✅ Webhook Verified Successfully!");
     return new NextResponse(challenge, { status: 200 });
   } else {
-    return new NextResponse("Forbidden", { status: 403 });
+    return new NextResponse("❌ Forbidden", { status: 403 });
   }
 }
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
+  console.log(body);
+  console.log("🔔 Webhook Event Received:", JSON.stringify(body, null, 2));
 
-  console.log("Received webhook event:", JSON.stringify(body, null, 2));
+  return new NextResponse("OK", { status: 200 });
 }
