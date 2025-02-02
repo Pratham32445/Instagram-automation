@@ -25,7 +25,7 @@ export const POST = async (req: NextRequest) => {
       });
     }
     const token = jwt.sign(
-      { Id: user.Id },
+      { Id: user.userId },
       process.env.JWT_SECRET_KEY as string
     );
     const response = NextResponse.json({ message: "Created" }, { status: 201 });

@@ -23,9 +23,10 @@ model User {
 }
 
 model KeyWord {
-  Id     String @id @default(uuid())
-  userId String
-  Key    String
-  Value  String
-  user   User   @relation(fields: [userId], references: [Id])
+  Id        String   @id @default(uuid())
+  userId    String
+  Key       String
+  Value     String
+  Variables String[]
+  user      User     @relation(fields: [userId], references: [userId])
 }
