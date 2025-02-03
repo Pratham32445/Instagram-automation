@@ -1,17 +1,16 @@
-"use client";
-import React, { useEffect } from "react";
-import Cookie from "js-cookie";
-import { useRouter } from "next/navigation";
+import React from "react";
 
-const Dashboard = () => {
-  const router = useRouter();
-  useEffect(() => {
-    const tokenFromCookie = Cookie.get("auth_token");
-    console.log(tokenFromCookie);
-    // if (!tokenFr omCookie) router.push("/login");
-  }, []);
-
-  return <div>Dashboard</div>;
+const Home = () => {
+  return (
+    <div className="flex flex-1 flex-col gap-4 p-4">
+      <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+        <div className="aspect-video rounded-xl bg-muted/50" />
+        <div className="aspect-video rounded-xl bg-muted/50" />
+        <div className="aspect-video rounded-xl bg-muted/50" />
+      </div>
+      <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
+    </div>
+  );
 };
 
-export default Dashboard;
+export default Home;
