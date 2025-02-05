@@ -1,6 +1,4 @@
-import React from "react";
-
-const Home = () => {
+const Dashboard = () => {
   return (
     <div className="flex flex-1 flex-col gap-4 p-4">
       <div className="grid auto-rows-min gap-4 md:grid-cols-3">
@@ -13,4 +11,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Dashboard;

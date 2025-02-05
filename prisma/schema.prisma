@@ -15,18 +15,17 @@ datasource db {
 
 model User {
   Id           String    @id @default(uuid())
-  userId       String    @unique
-  access_token String
-  username     String
+  userName     String    @unique
+  accountId    String
   account_type String
-  Keyword      KeyWord[]
+  access_token String
+  keyword      KeyWord[]
 }
 
 model KeyWord {
-  Id        String   @id @default(uuid())
-  userId    String
-  Key       String
-  Value     String
-  Variables String[]
-  user      User     @relation(fields: [userId], references: [userId])
+  Id       String @id @default(uuid())
+  userName String @unique
+  Key      String
+  Value    String
+  user     User   @relation(fields: [userName], references: [userName])
 }
