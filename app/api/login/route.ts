@@ -10,7 +10,7 @@ export const POST = async (req: NextRequest) => {
     if (!parsedBody.success)
       return NextResponse.json(
         { message: "Please Provide the valid fields" },
-        { status: 401 }
+        { status: 401 } 
       );
     const isUser = await client.user.findFirst({
       where: { userName: parsedBody.data.username },
