@@ -1,11 +1,13 @@
-import { LoginForm } from "@/components/LoginForm";
 import React from "react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { authUrl } from "@/utils/Url";
 
 const Login = () => {
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
-      <LoginForm />
-    </div>
+    <Link href={authUrl}>
+      <Button>Authenticate</Button>
+    </Link>
   );
 };
 

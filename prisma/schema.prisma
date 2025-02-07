@@ -14,18 +14,9 @@ datasource db {
 }
 
 model User {
-  Id           String    @id @default(uuid())
-  userName     String    @unique
-  accountId    String
+  Id           String @id @default(uuid())
+  userName     String @unique
+  userId       String
   account_type String
-  access_token String
-  keyword      KeyWord[]
-}
-
-model KeyWord {
-  Id       String @id @default(uuid())
-  userName String @unique
-  Key      String
-  Value    String
-  user     User   @relation(fields: [userName], references: [userName])
-}
+  access_token String 
+}     
