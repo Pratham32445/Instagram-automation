@@ -1,20 +1,22 @@
 "use client";
-import { getUser } from "@/utils/Url";
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
+import { InstagramManager } from "@/Manager/Instagram";
 
 const Verify = () => {
   const router = useRouter();
   const { toast } = useToast();
   useEffect(() => {
     const getUserDetails = async () => {
-      const data = await fetch(getUser + process.env.NEXT_PUBLIC_ACCESS_TOKEN!);
-      if (data.status == 200) {
-        const userData = await data.json();
+      const { data, status } =
+        await InstagramManager.getInstance().getUserDetails(
+          process.env.NEXT_PUBLIC_ACCESS_TOKEN!
+        );
+      if (status == 200) {
         await axios.post("/api/login", {
-          ...userData,
+          ...data,
           token: process.env.NEXT_PUBLIC_ACCESS_TOKEN!,
         });
         router.push("/dashboard");
