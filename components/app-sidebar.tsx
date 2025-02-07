@@ -1,15 +1,16 @@
-import Friends from "@/app/dashboard/friends/page";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { House, StickyNote } from "lucide-react";
+import { House, StickyNote, Cable } from "lucide-react";
 import Link from "next/link";
+import Logout from "./Logout";
 const items = [
   {
     title: "Home",
@@ -22,9 +23,9 @@ const items = [
     icon: StickyNote,
   },
   {
-    title: "Friends",
-    url: "/dashboard/friends",
-    icon: Friends,
+    title: "DM Automation",
+    url: "/dashboard/dm-automation",
+    icon: Cable,
   },
 ];
 
@@ -49,6 +50,9 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <Logout/>
+      </SidebarFooter>
     </Sidebar>
   );
 }

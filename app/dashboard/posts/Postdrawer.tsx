@@ -1,23 +1,46 @@
 import React from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { PostData } from "@/types/interface";
+import Image from "next/image";
+import { DialogTitle } from "@radix-ui/react-dialog";
 
-const Postdrawer = ({ open }: { open: boolean }) => {
+const Postdrawer = ({
+  postData,
+  setPostData,
+}: {
+  postData: PostData;
+  setPostData: ({ show, data }: { show: boolean; data: any }) => void;
+}) => {
+  console.log(postData);
   return (
-    <Dialog open={open}>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Are you absolutely sure?</DialogTitle>
-          <DialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </DialogDescription>
-        </DialogHeader>
+    <Dialog
+      open={postData.show}
+      onOpenChange={() => setPostData({ show: false, data: {} })}
+    >
+      <DialogContent className="flex">
+        <div>
+          <Image
+            alt="postImage"
+            width={500}
+            height={500}
+            src={postData.data.media_url}
+          />
+        </div>
+        <div>
+          {!postData.data.comments && (
+            <div className="flex justify-center items-center">
+              <DialogTitle>
+                <p>No Comments On the Post</p>
+              </DialogTitle>
+            </div>
+          )}
+          {postData.data.comments &&
+            postData.data.comments.data.map((idx) => (
+              <div key={idx}>
+                <DialogTitle>idx</DialogTitle>
+              </div>
+            ))}
+        </div>
       </DialogContent>
     </Dialog>
   );
